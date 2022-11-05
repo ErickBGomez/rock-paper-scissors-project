@@ -35,7 +35,7 @@ function getPlayerChoice() {
 
         isInputInvalid = !(answer === "Rock" || answer === "Paper" || answer === "Scissors");
 
-    } while(isInputInvalid)
+    } while(isInputInvalid);
 
     return answer;
 }
@@ -44,17 +44,17 @@ let getWinner = (playerPoints, computerPoints) => (playerPoints > computerPoints
 
 function game() {
 
-    alert("Let's play Rock, Paper, Scissors!")
+    alert("Let's play Rock, Paper, Scissors!");
 
     for (let i = 1; i <= 5; i++) {
 
-        console.log(`Round ${i}`)
+        console.log(`Round ${i}`);
 
         const player = getPlayerChoice();
         const computer = getComputerChoice();
 
         console.log(playRound(player, computer));
-        console.log(`Player: ${playerPoints} - Computer: ${computerPoints}`)
+        console.log(`Player: ${playerPoints} - Computer: ${computerPoints}`);
     }
 
     console.log(getWinner(playerPoints, computerPoints));
