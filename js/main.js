@@ -20,22 +20,41 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+function capitalize(text) {
+    return text.charAt(0).toUpperCase() + text.toLowerCase().slice(1);
+}
+
+function getPlayerChoice() {
+
+    let answer;
+    let isInputInvalid = true;
+
+    do {
+        answer = capitalize(prompt("Type your selection: [Rock], [Paper], [Scissors]", "") ?? "Invalid");
+
+        isInputInvalid = !(answer === "Rock" || answer === "Paper" || answer === "Scissors");
+
+    } while(isInputInvalid)
+
+    return answer;
+}
+
 function game() {
 
     alert("Let's play Rock, Paper, Scissors!")
-
-    
 
     for (let i = 1; i <= 5; i++) {
 
         console.log(`Round ${i}`)
 
-        const player = prompt("Type or selection: [Rock], [Paper], [Scissors]", "");
+        const player = getPlayerChoice();
         const computer = getComputerChoice();
 
         console.log(playRound(player, computer));
         console.log(`Player: ${playerWins} - Computer: ${computerWins}`)
     }
+
+    
 }
 
 let playerWins = 0;
