@@ -10,22 +10,19 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection){
-        return `Tie. Player: ${playerSelection}. Computer: ${computerSelection}`;
+        return `Tie.`;
     } else if ((playerSelection === "Rock" && computerSelection === "Scissors") || (playerSelection === "Paper" && computerSelection === "Rock") || (playerSelection === "Scissors" && computerSelection === "Paper")){
         playerPoints++;
-        return `Player wins. ${playerSelection} beats ${computerSelection}`;
+        return `Player wins the round. ${playerSelection} beats ${computerSelection}`;
     } else {
         computerPoints++;
-        return `Computer wins. ${computerSelection} beats ${playerSelection}`;
+        return `Computer wins the round. ${computerSelection} beats ${playerSelection}`;
     }
 }
 
-function capitalize(text) {
-    return text.charAt(0).toUpperCase() + text.toLowerCase().slice(1);
-}
+let capitalize = text => text.charAt(0).toUpperCase() + text.toLowerCase().slice(1);
 
 function getPlayerChoice() {
-
     let answer;
     let isInputInvalid = true;
 
@@ -40,27 +37,34 @@ function getPlayerChoice() {
     return answer;
 }
 
-let getWinner = (playerPoints, computerPoints) => (playerPoints > computerPoints) ? "Player is the winner!" : "Computer is the winner!";
+// Arrow function and a Ternary Operator to keep this function simpler.
+let getWinner = (playerPoints, computerPoints) => (playerPoints > computerPoints ? "Player" : "Computer") + " is the winner!";
 
 function game() {
-
     alert("Let's play Rock, Paper, Scissors!");
 
     for (let i = 1; i <= 5; i++) {
 
         console.log(`Round ${i}`);
 
+        // Get Player's choice and print their answer
         const player = getPlayerChoice();
-        const computer = getComputerChoice();
+        console.log(`Player: ${player}`);
 
+        // Get Computer's choice and print their answer
+        const computer = getComputerChoice();
+        console.log(`Computer: ${computer}`);
+
+        // Start round and get the winner for that round.
         console.log(playRound(player, computer));
         console.log(`Player: ${playerPoints} - Computer: ${computerPoints}`);
     }
 
+    // Get the winner of the game
     console.log(getWinner(playerPoints, computerPoints));
-    
 }
 
+// These two variables needs to be accessed by two functions, so, they need to be global
 let playerPoints = 0;
 let computerPoints = 0;
 
