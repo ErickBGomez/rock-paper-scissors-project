@@ -6,10 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet">
     <script src="js/main.js"></script>
 </head>
 
 <body>
-    
+    <section id="game-area">
+        <div class="title-screen hide-gui">
+            <h2>LET'S PLAY:</h2>
+            <h1><span class="rock-title">ROCK</span>, <span class="paper-title">PAPER</span>, <span class="scissors-title">SCISSORS</span>!</h1>
+        </div>
+
+        <div class="play-round">
+            <h1>ROUND N</h1>
+            <h2>Pick one:</h2>
+
+            <div class="multiple-selection">
+                <div class="selection">
+                    <div class="rock-button">R</div>
+                    <p>ROCK</p>
+                </div>
+                <div class="selection">
+                    <div class="paper-button">P</div>
+                    <p>PAPER</p>
+                </div>
+                <div class="selection">
+                    <div class="scissors-button">S</div>
+                    <p>SCISSORS</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        Project made by <a href="https://github.com/ErickBGomez" target="_blank">Erick B. Gómez</a>
+    </footer>
 </body>
 </html>

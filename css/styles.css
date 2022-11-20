@@ -1,0 +1,133 @@
+/* Variables */
+:root {
+    /* Colors */
+    --rock-accent: #f0790b;
+    --paper-accent: #11a9d8;
+    --scissors-accent: #e43737;
+
+    --black-accent: #1d1d1d;
+    --white-accent: #e2e2e2;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    color: var(--white-accent);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+body {
+    background-color: var(--black-accent);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#game-area {
+    border: 2px dashed #1daa6f;
+    width: 100%;
+    max-width: 1200px;
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* General game texts */
+h1 {
+    font-size: 3em;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+h2 {
+    font-size: 2em;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+/* Title screen text */
+.title-screen h1 {
+    font-size: 3em;
+}
+
+.title-screen h2 {
+    font-size: 2em;
+}
+
+.title-screen span {
+    font-weight: 1000;
+}
+
+.rock-title {
+    color: var(--rock-accent);
+}
+
+.paper-title {
+    color: var(--paper-accent);
+}
+
+.scissors-title {
+    color: var(--scissors-accent);
+}
+
+/* Selections */
+.multiple-selection {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.rock-button,
+.paper-button,
+.scissors-button {
+    background-color: var(--white-accent);
+    border-radius: 15px;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+    color: var(--black-accent);
+    font-weight: 600;
+    font-size: 2em;
+}
+
+.rock-button:hover {
+    background-color: var(--rock-accent);
+    color: var(--white-accent)
+}
+
+.paper-button:hover {
+    background-color: var(--paper-accent);
+    color: var(--white-accent)
+}
+
+.scissors-button:hover {
+    background-color: var(--scissors-accent);
+    color: var(--white-accent)
+}
+
+.selection p {
+    font-weight: 400;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    padding: 2vh 0;
+}
+
+a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #1daa6f;
+}
+
+/* Manipulate classes using DOM methods */
+.hide-gui {
+    display: none;
+}
