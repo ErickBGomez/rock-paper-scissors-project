@@ -10,6 +10,8 @@
 
     --player-accent: #1daa6f;
     --computer-accent: #a161d3;
+
+    --inactive-accent: #505050;
 }
 
 * {
@@ -267,4 +269,11 @@ a {
 
 .border {
     border: 2px dashed var(--player-accent);
+}
+
+/* DOM Manipulation styles */
+
+.player-button-inactive {
+    background-color: var(--inactive-accent);
+    cursor:auto;
 }
