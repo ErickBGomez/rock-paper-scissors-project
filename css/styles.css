@@ -7,6 +7,9 @@
 
     --black-accent: #1d1d1d;
     --white-accent: #e2e2e2;
+
+    --player-accent: #1daa6f;
+    --computer-accent: #a161d3;
 }
 
 * {
@@ -26,42 +29,40 @@ body {
     align-items: center;
 }
 
-#game-area {
-    border: 2px dashed #1daa6f;
+section, footer {
     width: 100%;
-    max-width: 1200px;
-    flex: 1;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    max-width: 1000px;
     text-align: center;
 }
 
-/* General game texts */
-h1 {
-    font-size: 3em;
-    font-weight: 800;
-    margin-bottom: 25px;
+section {
+    margin: 20px 0;
 }
 
-h2 {
-    font-size: 2em;
-    font-weight: 400;
-    margin-bottom: 15px;
+/* General game texts */
+.player-text {
+    color: var(--player-accent);
+}
+
+.computer-text {
+    color: var(--computer-accent);
 }
 
 /* Title screen text */
-.title-screen h1 {
-    font-size: 3em;
+
+#title-screen {
+    margin-bottom: 60px;
 }
 
-.title-screen h2 {
+#title-screen h1 {
     font-size: 2em;
+    margin: 0;
+    font-weight: 1000;
 }
 
-.title-screen span {
-    font-weight: 1000;
+#title-screen h2 {
+    font-size: 1em;
+    margin: 0;
 }
 
 .rock-title {
@@ -76,43 +77,176 @@ h2 {
     color: var(--scissors-accent);
 }
 
-/* Selections */
-.multiple-selection {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
+/* Game area */
+
+
+#game-area {
+    flex: 1;
 }
 
-.rock-button,
-.paper-button,
-.scissors-button {
-    background-color: var(--white-accent);
-    border-radius: 15px;
+
+/* Round and game labels */
+
+h1.round-text {
+    font-weight: 800;
+    font-size: 2.5em;
+
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-weight: 400;
+    font-size: 1.5em;
+}
+
+/* Select action styles */
+
+.selection-area {
+    display: flex;
+    justify-content: space-between;
+}
+
+.player-label {
+    color: var(--player-accent);
+}
+
+.computer-label {
+    color: var(--computer-accent);
+}
+
+.actions-area {
+    display: flex;
+    gap: 25px;
+}
+
+.action-block {
     width: 100px;
     height: 100px;
+    border-radius: 15px;
+    margin-top: 25px;
     margin-bottom: 10px;
+
+    font-weight: 800;
+    font-size: 1.5em;
+}
+
+/* Player buttons */
+
+.player-button {
+    background-color: var(--white-accent);
     color: var(--black-accent);
-    font-weight: 600;
-    font-size: 2em;
+    border: none;
+
+    transition: 100ms;
 }
 
-.rock-button:hover {
+.player-button:hover {
+    scale: 1.1;
+    color: var(--white-accent);
+    transition: 100ms;
+}
+
+.player-button.rock-block:hover {
     background-color: var(--rock-accent);
-    color: var(--white-accent)
 }
 
-.paper-button:hover {
+.player-button.paper-block:hover {
     background-color: var(--paper-accent);
-    color: var(--white-accent)
 }
 
-.scissors-button:hover {
+.player-button.scissors-block:hover {
     background-color: var(--scissors-accent);
-    color: var(--white-accent)
 }
 
-.selection p {
-    font-weight: 400;
+/* Computer buttons */
+
+.computer-button {
+    background-color: var(--black-accent);
+    color: var(--white-accent);
+    border: 3px solid var(--white-accent);
+}
+
+.computer-button.selected {
+    scale: 1.1;
+}
+
+.computer-button.rock-block.selected {
+    border-color: var(--rock-accent);
+    color: var(--rock-accent);
+}
+
+.computer-button.paper-block.selected {
+    border-color: var(--paper-accent);
+    color: var(--paper-accent);
+}
+
+.computer-button.scissors-block.selected {
+    border-color: var(--scissors-accent);
+    color: var(--scissors-accent);
+}
+
+/* Points */
+
+.points-area {
+    margin-top: 40px;
+}
+
+.points-label {
+    margin-bottom: 10px;
+}
+
+.points span {
+    font-size: 3em;
+}
+
+.points-divider {
+    margin: 0 70px;
+}
+
+/* Game logs */
+
+#game-logs {
+    /*visibility: hidden;*/
+}
+
+/* End game buttons */
+
+#end-game-buttons {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+
+    /*visibility: hidden;*/
+}
+
+#end-game-buttons button {
+    width: 225px;
+    height: 75px;
+    border-radius: 15px;
+    font-size: 1em;
+    font-weight: 800;
+
+    color: var(--black-accent);
+    border: none;
+
+    transition: 100ms;
+}
+
+#end-game-buttons button:hover {
+    scale: 1.1;
+    color: var(--white-accent);
+
+    transition: 100ms;
+}
+
+.play-again:hover {
+    background-color: var(--player-accent);
+}
+
+.view-source-code:hover {
+    background-color: var(--computer-accent);
 }
 
 /* Footer styles */
@@ -124,10 +258,9 @@ footer {
 a {
     text-decoration: none;
     font-weight: 600;
-    color: #1daa6f;
+    color: var(--player-accent);
 }
 
-/* Manipulate classes using DOM methods */
-.hide-gui {
-    display: none;
+.border {
+    border: 2px dashed var(--player-accent);
 }

@@ -13,32 +13,81 @@
 </head>
 
 <body>
+    <section id="title-screen">
+        <h2>LET'S PLAY:</h2>
+        <h1 class="rock-title">ROCK</h1>
+        <h1 class="paper-title">PAPER</h1>
+        <h1 class="scissors-title">SCISSORS</h1>
+    </section>
     <section id="game-area">
-        <div class="title-screen hide-gui">
-            <h2>LET'S PLAY:</h2>
-            <h1><span class="rock-title">ROCK</span>, <span class="paper-title">PAPER</span>, <span class="scissors-title">SCISSORS</span>!</h1>
-        </div>
+        <h1 class="round-text">ROUND 1</h1>
 
-        <div class="play-round">
-            <h1>ROUND N</h1>
-            <h2>Pick one:</h2>
+        <div class="selection-area">
 
-            <div class="multiple-selection">
-                <div class="selection">
-                    <div class="rock-button">R</div>
-                    <p>ROCK</p>
+            <div class="player-area">
+                <h2 class="player-label">Player</h2>
+
+                <div class="actions-area">
+
+                    <div class="action">
+                        <button class="action-block player-button rock-block">R</button>
+                        <p class="action-text">ROCK</p>
+                    </div>
+
+                    <div class="action">
+                        <button class="action-block player-button paper-block">P</button>
+                        <p class="action-text">PAPER</p>
+                    </div>
+
+                    <div class="action">
+                        <button class="action-block player-button scissors-block">S</button>
+                        <p class="action-text">SCISSORS</p>
+                    </div>
                 </div>
-                <div class="selection">
-                    <div class="paper-button">P</div>
-                    <p>PAPER</p>
-                </div>
-                <div class="selection">
-                    <div class="scissors-button">S</div>
-                    <p>SCISSORS</p>
+            </div>
+
+            <div class="computer-area">
+                <h2 class="computer-label">Computer</h2>
+
+                <div class="actions-area">
+
+                    <div class="action">
+                        <button class="action-block computer-button rock-block">R</button>
+                        <p class="action-text">ROCK</p>
+                    </div>
+
+                    <div class="action">
+                        <button class="action-block computer-button paper-block">P</button>
+                        <p class="action-text">PAPER</p>
+                    </div>
+
+                    <div class="action">
+                        <button class="action-block computer-button scissors-block">S</button>
+                        <p class="action-text">SCISSORS</p>
+                    </div>
                 </div>
             </div>
 
         </div>
+
+        <div class="points-area">
+            <h2 class="points-label">Points</h2>
+
+            <div class="points">
+                <span id="player-points">0</span>
+                <span class="points-divider">-</span>
+                <span id="computer-points">0</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="game-logs">
+        <h2>Player won the round!</h2>
+    </section>
+
+    <section id="end-game-buttons">
+        <button class="play-again">PLAY AGAIN</button>
+        <button class="view-source-code">VIEW SOURCE CODE</button>
     </section>
 
     <footer>
