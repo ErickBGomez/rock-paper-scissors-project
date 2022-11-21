@@ -11,7 +11,7 @@
     --player-accent: #1daa6f;
     --computer-accent: #a161d3;
 
-    --inactive-accent: #505050;
+    --inactive-accent: #3b3b3b;
 }
 
 * {
@@ -139,7 +139,7 @@ h2 {
     color: var(--black-accent);
     border: none;
 
-    transition: 100ms;
+    transition: 150ms;
 }
 
 .player-button:hover {
@@ -147,7 +147,7 @@ h2 {
 
     scale: 1.1;
     color: var(--white-accent);
-    transition: 100ms;
+    transition: 200ms;
 }
 
 .player-button.rock-block:hover {
@@ -235,7 +235,7 @@ h2 {
     color: var(--black-accent);
     border: none;
 
-    transition: 100ms;
+    transition: 150ms;
 }
 
 #end-game-buttons button:hover {
@@ -244,7 +244,7 @@ h2 {
 
     cursor: pointer;
 
-    transition: 100ms;
+    transition: 200ms;
 }
 
 .play-again:hover {
@@ -267,6 +267,8 @@ a {
     color: var(--player-accent);
 }
 
+/* Others */
+
 .border {
     border: 2px dashed var(--player-accent);
 }
@@ -275,5 +277,9 @@ a {
 
 .player-button-inactive {
     background-color: var(--inactive-accent);
-    cursor:auto;
+    color: var(--black-accent);
+    border:none;
+
+    scale: 0.9;
+    transition: 300ms;
 }

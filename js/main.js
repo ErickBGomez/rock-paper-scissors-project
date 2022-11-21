@@ -68,4 +68,6 @@ function game() {
 let playerPoints = 0;
 let computerPoints = 0;
 
+let playerSelection;
+
 //game();
