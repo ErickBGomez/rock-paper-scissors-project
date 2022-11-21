@@ -141,6 +141,8 @@ h2 {
 }
 
 .player-button:hover {
+    cursor:pointer;
+
     scale: 1.1;
     color: var(--white-accent);
     transition: 100ms;
@@ -237,6 +239,8 @@ h2 {
 #end-game-buttons button:hover {
     scale: 1.1;
     color: var(--white-accent);
+
+    cursor: pointer;
 
     transition: 100ms;
 }
