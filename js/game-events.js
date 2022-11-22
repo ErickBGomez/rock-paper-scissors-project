@@ -1,41 +1,72 @@
 const playerButtons = document.querySelectorAll("button.player-button");
+const computerButtons = document.querySelectorAll("button.computer-button");
+
 resetAllButtons();
 
-function buttonAction(e) {
+function selectPlayerButton(e) {
     playerSelection = e.target.textContent;
 
-    // Change state to selected to target button
+    // Clicked button will change its state to "Selected"
     e.target.classList.add("selected");
 
     console.log("Player selection: " + playerSelection);
 
     // Disable all buttons except the one who invoked this function
-    playerButtons.forEach(button => {
+    playerButtons.forEach(playerButton => {
 
-        if (button.textContent !== e.target.textContent) {
+        if (playerButton !== e.target) {
 
-            button.classList.remove("player-button");
-            button.classList.add("player-button-inactive");
-            button.removeEventListener("click", buttonAction);
+            playerButton.classList.remove("player-button");
+            playerButton.classList.add("player-button-inactive");
+            playerButton.removeEventListener("click", selectPlayerButton);
         }
     });
+
+
+    selectComputerButton(playerSelection);
+}
+
+// Test function: Change computer buttons state based on Player's Selection
+function selectComputerButton(playerSelection) {
+    
+    computerButtons.forEach(computerButton => {
+        if (playerSelection === computerButton.textContent) {
+            computerButton.classList.add("selected");
+
+            computerSelection = computerButton.textContent;
+            console.log("Computer selection: " + computerSelection);
+
+        } else {
+            computerButton.classList.remove("computer-button");
+            computerButton.classList.add("computer-button-inactive");
+        }
+    })
 }
 
 function resetAllButtons() {
-    playerButtons.forEach(button => {
-        button.addEventListener("click", buttonAction, {
+    playerButtons.forEach(playerButton => {
+        playerButton.addEventListener("click", selectPlayerButton, {
             once: true
         });
 
         // Reset selected button
-        if (button.classList.contains("selected")) button.classList.remove("selected");
+        if (playerButton.classList.contains("selected")) playerButton.classList.remove("selected");
 
         // Enable all buttons by resetting their classes
-        if (button.classList.contains("player-button-inactive")) {
-            button.classList.remove("player-button-inactive");
-            button.classList.add("player-button");
+        if (playerButton.classList.contains("player-button-inactive")) {
+            playerButton.classList.remove("player-button-inactive");
+            playerButton.classList.add("player-button");
         }
     });
+
+    computerButtons.forEach(computerButton => {
+        if (computerButton.classList.contains("selected")) computerButton.classList.remove("selected");
+    
+        if (computerButton.classList.contains("computer-button-inactive")) {
+            computerButton.classList.remove("computer-button-inactive");
+            computerButton.classList.add("computer-button");
+        }
+    })
 }
 
 // Reset test

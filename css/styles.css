@@ -178,10 +178,14 @@ h2 {
     background-color: var(--black-accent);
     color: var(--white-accent);
     border: 3px solid var(--white-accent);
+
+    transition: 150ms;
 }
 
 .computer-button.selected {
     scale: 1.1;
+
+    transition: 200ms;
 }
 
 .computer-button.rock-block.selected {
@@ -289,7 +293,16 @@ a {
     background-color: var(--inactive-accent);
     color: var(--black-accent);
     border:none;
+}
 
+.computer-button-inactive {
+    background-color: var(--black-accent);
+    color: var(--inactive-accent);
+    border: 3px solid var(--inactive-accent);
+}
+
+.player-button-inactive,
+.computer-button-inactive {
     scale: 0.9;
     transition: 300ms;
 }

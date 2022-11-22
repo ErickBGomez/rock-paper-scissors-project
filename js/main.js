@@ -69,5 +69,6 @@ let playerPoints = 0;
 let computerPoints = 0;
 
 let playerSelection;
+let computerSelection;
 
 //game();
