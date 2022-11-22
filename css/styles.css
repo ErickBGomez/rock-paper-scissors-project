@@ -248,10 +248,6 @@ inactive: Disabled buttons that were not selected
 
 /* Game logs */
 
-#game-logs {
-    /*visibility: hidden;*/
-}
-
 /* End game buttons */
 
 #end-game-buttons {
@@ -260,8 +256,6 @@ inactive: Disabled buttons that were not selected
     align-items: center;
     justify-content: center;
     gap: 25px;
-
-    /*visibility: hidden;*/
 }
 
 #end-game-buttons button {
@@ -312,4 +306,8 @@ a {
 
 .border {
     border: 2px dashed var(--player-accent);
+}
+
+.hide {
+    visibility: hidden;
 }

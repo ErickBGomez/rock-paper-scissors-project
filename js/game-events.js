@@ -5,6 +5,7 @@ const allButtons = document.querySelectorAll(".action-block");
 
 resetAllButtons();
 
+
 function selectPlayerButton(e) {
     changeButtonState(e.target, "selected");
 
@@ -21,24 +22,24 @@ function selectPlayerButton(e) {
         }
     });
 
-
-    selectComputerButton(playerSelection);
+    setTimeout(setComputerSelection, 500);
 }
 
 // Test function: Change computer buttons state based on Player's Selection
-function selectComputerButton(playerSelection) {
+function selectComputerButton(selection) {
     
     computerButtons.forEach(computerButton => {
-        if (playerSelection === computerButton.textContent) {
+        if (selection === computerButton.textContent) {
             changeButtonState(computerButton, "selected")
 
-            computerSelection = computerButton.textContent;
             console.log("Computer selection: " + computerSelection);
 
         } else {
             changeButtonState(computerButton, "inactive");
         }
     })
+
+    playRound(playerSelection, computerSelection);
 }
 
 function changeButtonState(button, newState) {
