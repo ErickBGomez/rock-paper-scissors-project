@@ -5,6 +5,13 @@ const allButtons = document.querySelectorAll(".action-block");
 
 resetAllButtons();
 
+// Select Points
+const playerPointsLabel = document.querySelector("#player-points");
+const computerPointsLabel = document.querySelector("#computer-points");
+
+// Select Round label
+const roundTitle = document.querySelector("#round-label");
+
 
 function selectPlayerButton(e) {
     changeButtonState(e.target, "selected");
@@ -44,6 +51,10 @@ function selectComputerButton(selection) {
 
 function changeButtonState(button, newState) {
     button.dataset.state = newState;
+}
+
+function setNewRound() {
+    roundTitle.textContent = ++roundNumber;
 }
 
 function resetAllButtons() {

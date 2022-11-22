@@ -11,31 +11,17 @@ function setComputerSelection() {
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection){
-        return `Tie.`;
-    } else if ((playerSelection === "Rock" && computerSelection === "Scissors") || (playerSelection === "Paper" && computerSelection === "Rock") || (playerSelection === "Scissors" && computerSelection === "Paper")){
-        playerPoints++;
-        return `Player wins the round. ${playerSelection} beats ${computerSelection}`;
+        // Tie
+    } else if ((playerSelection === "R" && computerSelection === "S") || (playerSelection === "P" && computerSelection === "R") || (playerSelection === "S" && computerSelection === "P")){
+        playerPointsLabel.textContent = ++playerPoints;
+        // Player win
     } else {
-        computerPoints++;
-        return `Computer wins the round. ${computerSelection} beats ${playerSelection}`;
+        computerPointsLabel.textContent = ++computerPoints;
+        // Computer win
     }
-}
 
-let capitalize = text => text.charAt(0).toUpperCase() + text.toLowerCase().slice(1);
-
-function getPlayerSelection() {
-    let answer;
-    let invalidInput = true;
-
-    do {
-        // Ask the player to enter their input. If the input is "undefined", then the string will be "Invalid". After this prompt, the string will be capitalized
-        answer = capitalize(prompt("Type your selection: [Rock], [Paper], [Scissors]", "") ?? "Invalid");
-
-        invalidInput = !(answer === "Rock" || answer === "Paper" || answer === "Scissors");
-
-    } while(invalidInput);
-
-    return answer;
+    setTimeout(resetAllButtons, 1000);
+    setTimeout(setNewRound, 1000);
 }
 
 // Arrow function and a Ternary Operator to keep this function simpler.
@@ -48,3 +34,6 @@ let computerPoints = 0;
 let playerSelection = "";
 let computerSelection = "";
 
+let roundNumber = 1;
+
+roundTitle.textContent = roundNumber;
