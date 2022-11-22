@@ -132,75 +132,100 @@ h2 {
     font-size: 1.5em;
 }
 
-/* Player buttons */
+/* Button states:
 
-.player-button {
-    background-color: var(--white-accent);
-    color: var(--black-accent);
-    border: none;
+active: Waiting to be selected
+selected: Button selected either by the player or computer
+inactive: Disabled buttons that were not selected
 
+*/
+
+[data-state="active"] {
+    scale: 1.0;
     transition: 150ms;
 }
 
-.player-button:hover {
+[data-state="selected"],
+.player-button[data-state="active"]:hover {
+    scale: 1.1;
+    transition: 200ms;
+}
+
+[data-state="inactive"] {
+    scale: 0.9;
+    transition: 150ms;
+}
+
+/* Player button styles and states */
+
+.player-button {
+    border: none;
+}
+
+.player-button[data-state="active"] {
+    background-color: var(--white-accent);
+    color: var(--black-accent);
+}
+
+.player-button[data-state="active"]:hover {
     cursor: pointer;
 }
 
-.player-button.selected:hover {
-    cursor: auto;
-}
-
-.player-button:hover,
-.player-button.selected {
-    scale: 1.1;
+.player-button[data-state="active"]:hover,
+.player-button[data-state="selected"] {
     color: var(--white-accent);
-    transition: 200ms;
 }
 
-.player-button.rock-block:hover,
-.player-button.rock-block.selected {
+.player-button.rock-block[data-state="active"]:hover,
+.player-button.rock-block[data-state="selected"] {
     background-color: var(--rock-accent);
 }
 
-.player-button.paper-block:hover,
-.player-button.paper-block.selected {
+.player-button.paper-block[data-state="active"]:hover,
+.player-button.paper-block[data-state="selected"] {
     background-color: var(--paper-accent);
 }
 
-.player-button.scissors-block:hover,
-.player-button.scissors-block.selected {
+.player-button.scissors-block[data-state="active"]:hover,
+.player-button.scissors-block[data-state="selected"] {
     background-color: var(--scissors-accent);
 }
 
-/* Computer buttons */
+.player-button[data-state="inactive"] {
+    background-color: var(--inactive-accent);
+    color: var(--black-accent);
+}
+
+/* Computer buttons styles and states */
 
 .computer-button {
     background-color: var(--black-accent);
+    border: 3px solid;
+}
+
+.computer-button[data-state="active"] {
     color: var(--white-accent);
-    border: 3px solid var(--white-accent);
-
-    transition: 150ms;
+    border-color: var(--white-accent);
 }
 
-.computer-button.selected {
-    scale: 1.1;
-
-    transition: 200ms;
-}
-
-.computer-button.rock-block.selected {
-    border-color: var(--rock-accent);
+.computer-button.rock-block[data-state="selected"] {
     color: var(--rock-accent);
+    border-color: var(--rock-accent);
 }
 
-.computer-button.paper-block.selected {
-    border-color: var(--paper-accent);
+.computer-button.paper-block[data-state="selected"] {
     color: var(--paper-accent);
+    border-color: var(--paper-accent);
 }
 
-.computer-button.scissors-block.selected {
-    border-color: var(--scissors-accent);
+.computer-button.scissors-block[data-state="selected"] {
     color: var(--scissors-accent);
+    border-color: var(--scissors-accent);
+}
+
+.computer-button[data-state="inactive"] {
+    color: var(--inactive-accent);
+    border-color: var(--inactive-accent);
 }
 
 /* Points */
@@ -279,30 +304,12 @@ a {
     text-decoration: none;
     font-weight: 600;
     color: var(--player-accent);
+
+    transition: 100ms;
 }
 
 /* Others */
 
 .border {
     border: 2px dashed var(--player-accent);
-}
-
-/* DOM Manipulation styles */
-
-.player-button-inactive {
-    background-color: var(--inactive-accent);
-    color: var(--black-accent);
-    border:none;
-}
-
-.computer-button-inactive {
-    background-color: var(--black-accent);
-    color: var(--inactive-accent);
-    border: 3px solid var(--inactive-accent);
-}
-
-.player-button-inactive,
-.computer-button-inactive {
-    scale: 0.9;
-    transition: 300ms;
 }
