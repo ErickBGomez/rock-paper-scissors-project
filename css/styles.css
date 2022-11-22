@@ -143,22 +143,32 @@ h2 {
 }
 
 .player-button:hover {
-    cursor:pointer;
+    cursor: pointer;
+}
 
+.player-button.selected:hover {
+    cursor: auto;
+}
+
+.player-button:hover,
+.player-button.selected {
     scale: 1.1;
     color: var(--white-accent);
     transition: 200ms;
 }
 
-.player-button.rock-block:hover {
+.player-button.rock-block:hover,
+.player-button.rock-block.selected {
     background-color: var(--rock-accent);
 }
 
-.player-button.paper-block:hover {
+.player-button.paper-block:hover,
+.player-button.paper-block.selected {
     background-color: var(--paper-accent);
 }
 
-.player-button.scissors-block:hover {
+.player-button.scissors-block:hover,
+.player-button.scissors-block.selected {
     background-color: var(--scissors-accent);
 }
 

@@ -3,10 +3,15 @@ resetAllButtons();
 
 function buttonAction(e) {
     playerSelection = e.target.textContent;
+
+    // Change state to selected to target button
+    e.target.classList.add("selected");
+
     console.log("Player selection: " + playerSelection);
 
     // Disable all buttons except the one who invoked this function
     playerButtons.forEach(button => {
+
         if (button.textContent !== e.target.textContent) {
 
             button.classList.remove("player-button");
@@ -22,9 +27,14 @@ function resetAllButtons() {
             once: true
         });
 
+        // Reset selected button
+        if (button.classList.contains("selected")) button.classList.remove("selected");
+
         // Enable all buttons by resetting their classes
-        button.classList.remove("player-button-inactive");
-        button.classList.add("player-button");
+        if (button.classList.contains("player-button-inactive")) {
+            button.classList.remove("player-button-inactive");
+            button.classList.add("player-button");
+        }
     });
 }
 
