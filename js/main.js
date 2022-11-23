@@ -12,6 +12,9 @@ const totalRounds = 5;
 const computerDecisionDelay = 500;
 const playRoundDelay = 500;
 const nextRoundDelay = 500;
+const gameOverDelay = 2000;
+const decideWinnerDelay = 2000;
+
 
 // Selection of DOM nodes:
 // Select buttons
@@ -57,13 +60,12 @@ function selectPlayerButton(e) {
 }
 
 function selectComputerButton(selection) {
-    
     computerButtons.forEach(computerButton => {
         if (selection === computerButton.textContent)
             changeButtonState(computerButton, "selected");
         else
             changeButtonState(computerButton, "inactive");
-    })
+    });
 
     // When player and computer made their selection, play a round
     setTimeout(playRound, playRoundDelay);
@@ -71,9 +73,6 @@ function selectComputerButton(selection) {
 
 function setPlayerSelection(selection) {
     playerSelection = selection;
-
-    console.log("Player selection: " + playerSelection);// Test
-
 }
 
 function setComputerSelection() {
@@ -84,21 +83,18 @@ function setComputerSelection() {
                       : (random === 2) ? "S"
                       : "Invalid number";
 
-    console.log("Computer selection: " + computerSelection); // Test
-
     selectComputerButton(computerSelection);
 }
 
 function playRound() {
-
     if (playerSelection === computerSelection){
         updateLabel(gameLogsLabel, "Tie");
-    } else if ((playerSelection === "R" && computerSelection === "S") || (playerSelection === "P" && computerSelection === "R") || (playerSelection === "S" && computerSelection === "P")){
-        
+    } else if ((playerSelection === "R" && computerSelection === "S")
+            || (playerSelection === "P" && computerSelection === "R")
+            || (playerSelection === "S" && computerSelection === "P")) {
         updateLabel(playerPointsLabel, ++playerPoints);
         updateLabel(gameLogsLabel, "Player won the round");
     } else {
-
         updateLabel(computerPointsLabel, ++computerPoints);
         updateLabel(gameLogsLabel, "Computer won the round");
     }
@@ -106,37 +102,23 @@ function playRound() {
     setTimeout(checkNextRound, nextRoundDelay);
 }
 
-function updateLabel(node, newValue) {
-
-    changeNodeVisibility(node, "hide");  
-
-    node.addEventListener("transitionend", () => {
-        
-        node.textContent = newValue;
-        changeNodeVisibility(node, "show");
-    });
-}
-
 function checkNextRound() {
     if (actualRound < totalRounds) {
         resetAllButtons();
-
         // Set new round
         updateLabel(roundLabel, ++actualRound);
-
-    } else {
-        setTimeout(() => {
-            updateLabel(gameLogsLabel, "Game over!");
-            changeAllButtonsState("inactive");
-        }, 1000);
-
-        setTimeout(() => {
-            decideWinner(playerPoints, computerPoints);
-        }, 2000);
-    }
+    } else
+        setTimeout(setGameOver, gameOverDelay);
 }
 
-function decideWinner(playerPoints, computerPoints) {
+function setGameOver() {
+    updateLabel(gameLogsLabel, "Game over!");
+    changeAllButtonsState("inactive");
+
+    setTimeout(decideWinner, decideWinnerDelay);
+}
+
+function decideWinner() {
     if (playerPoints === computerPoints) {
         updateLabel(gameLogsLabel, "There are no winners!");
     } else if (playerPoints > computerPoints) {
@@ -153,11 +135,10 @@ function restartNewGame() {
     updateLabel(computerPointsLabel, computerPoints = 0);
     
     updateLabel(roundLabel, actualRound = 1);
-
     updateLabel(gameLogsLabel, "");
 
     resetAllButtons();
-    
+
     changeNodeVisibility(endButtonsArea, "hide");
 }
 
@@ -172,7 +153,8 @@ function openSourceCode() {
 endButtonsArea.lastElementChild.addEventListener("click", openSourceCode);
 
 
-// DOM Manipulation:
+// Repetitive DOM Manipulation methods:
+
 function changeButtonState(button, newState) {
     button.dataset.state = newState;
 }
@@ -187,6 +169,17 @@ function resetAllButtons() {
     playerButtons.forEach(playerButton => playerButton.addEventListener("click", selectPlayerButton, {
             once: true
     }));
+}
+
+// Animation before and after applying new value to a node
+function updateLabel(node, newValue) {
+    changeNodeVisibility(node, "hide");  
+
+    node.addEventListener("transitionend", () => {
+        
+        node.textContent = newValue;
+        changeNodeVisibility(node, "show");
+    });
 }
 
 function changeNodeVisibility(node, newState) {
