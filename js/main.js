@@ -148,6 +148,30 @@ function decideWinner(playerPoints, computerPoints) {
     changeNodeVisibility(endButtonsArea, "show");
 }
 
+function restartNewGame() {
+    updateLabel(playerPointsLabel, playerPoints = 0);
+    updateLabel(computerPointsLabel, computerPoints = 0);
+    
+    updateLabel(roundLabel, actualRound = 1);
+
+    updateLabel(gameLogsLabel, "");
+
+    resetAllButtons();
+    
+    changeNodeVisibility(endButtonsArea, "hide");
+}
+
+// Add restartGame function to "Play Again" button
+endButtonsArea.firstElementChild.addEventListener("click", restartNewGame);
+
+function openSourceCode() {
+    window.open("https://github.com/ErickBGomez/rock-paper-scissors-project", "_blank").focus();
+}
+
+// Add openSourceCode function to "View Open Source" button
+endButtonsArea.lastElementChild.addEventListener("click", openSourceCode);
+
+
 // DOM Manipulation:
 function changeButtonState(button, newState) {
     button.dataset.state = newState;
