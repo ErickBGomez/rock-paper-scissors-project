@@ -301,8 +301,6 @@ a {
     text-decoration: none;
     font-weight: 600;
     color: var(--player-accent);
-
-    transition: 100ms;
 }
 
 /* Others */
@@ -312,6 +310,15 @@ a {
 }
 
 .hide {
-    visibility: hidden;
-    transition: 200ms;
+    opacity: 0%;
+    
+}
+
+.unhide {
+    opacity: 100%;
+}
+
+.hide,
+.unhide {
+    transition: opacity 0.25s;
 }

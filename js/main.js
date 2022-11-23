@@ -10,8 +10,8 @@ let totalRounds = 5;
 
 // Times (milliseconds):
 const computerDecisionDelay = 500;
-const nextRoundDelay = 2000;
 const playRoundDelay = 500;
+const nextRoundDelay = 500;
 
 // Selection of DOM nodes:
 // Select buttons
@@ -29,10 +29,12 @@ const gameLogsLabel = document.querySelector(".game-logs");
 // Select Round label
 const roundLabel = document.querySelector("#round-label");
 
+// End game buttons
+const endButtons = document.querySelector("#end-game-buttons");
 
 // Game starts here
 resetAllButtons();
-
+gameLogsLabel.textContent = "";
 
 // Player and computer selections:
 function selectPlayerButton(e) {
@@ -49,7 +51,6 @@ function selectPlayerButton(e) {
         }
     });
 
-    // When player made their selection, it's time for computer make its own selection
     setTimeout(setComputerSelection, computerDecisionDelay);
 }
 
@@ -87,16 +88,32 @@ function setComputerSelection() {
 
 function playRound() {
     if (playerSelection === computerSelection){
-        gameLogsLabel.textContent = "Tie";
+        updateLabel(gameLogsLabel, "Tie");
     } else if ((playerSelection === "R" && computerSelection === "S") || (playerSelection === "P" && computerSelection === "R") || (playerSelection === "S" && computerSelection === "P")){
-        playerPointsLabel.textContent = ++playerPoints;
-        gameLogsLabel.textContent = "Player won the round!";
+        
+        updateLabel(playerPointsLabel, ++playerPoints);
+
+        updateLabel(gameLogsLabel, "Player won the round");
     } else {
-        computerPointsLabel.textContent = ++computerPoints;
-        gameLogsLabel.textContent = "Computer won the round!";
+
+        updateLabel(computerPointsLabel, ++computerPoints);
+
+        updateLabel(gameLogsLabel, "Computer won the round");
     }
 
     setTimeout(checkNextRound, nextRoundDelay);
+}
+
+function updateLabel(node, newValue) {
+
+    node.classList.remove("unhide");
+    node.classList.add("hide");
+
+    node.addEventListener("transitionend", () => {
+        node.classList.remove("hide");
+        node.textContent = newValue;
+        node.classList.add("unhide");
+    });
 }
 
 function checkNextRound() {
@@ -104,20 +121,27 @@ function checkNextRound() {
         resetAllButtons();
         setNewRound();
     } else {
-        console.log("Game finished!");
+        setTimeout(() => {
+            updateLabel(gameLogsLabel, "Game over!");
+        }, 1000);
 
-        decideWinner(playerPoints, computerPoints);
+        setTimeout(() => {
+            decideWinner(playerPoints, computerPoints);
+        }, 2000);
     }
 }
 
 function decideWinner(playerPoints, computerPoints) {
     if (playerPoints === computerPoints) {
-        console.log("There are no winners!");
+        updateLabel(gameLogsLabel, "There are no winners!");
     } else if (playerPoints > computerPoints) {
-        console.log("Player is the winner of the game!");
+        updateLabel(gameLogsLabel, "Player is the winner of the game!");
     } else {
-        console.log("Computer is the winner of the game!");
+        updateLabel(gameLogsLabel, "Computer is the winner of the game!");
     }
+
+    endButtons.classList.remove("hide");
+    endButtons.classList.add("unhide");
 }
 
 
