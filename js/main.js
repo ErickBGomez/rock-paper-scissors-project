@@ -12,7 +12,7 @@ const totalRounds = 5;
 const computerDecisionDelay = 500;
 const playRoundDelay = 500;
 const nextRoundDelay = 500;
-const gameOverDelay = 2000;
+const gameOverDelay = 1000;
 const decideWinnerDelay = 2000;
 
 
