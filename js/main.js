@@ -6,7 +6,7 @@ let playerPoints = 0;
 let computerPoints = 0;
 
 let actualRound = 1;
-let totalRounds = 5;
+const totalRounds = 5;
 
 // Times (milliseconds):
 const computerDecisionDelay = 500;
@@ -30,15 +30,17 @@ const gameLogsLabel = document.querySelector(".game-logs");
 const roundLabel = document.querySelector("#round-label");
 
 // End game buttons
-const endButtons = document.querySelector("#end-game-buttons");
+const endButtonsArea = document.querySelector("#end-game-buttons");
 
 // Game starts here
 resetAllButtons();
-gameLogsLabel.textContent = "";
+roundLabel.textContent = actualRound;
 
 // Player and computer selections:
 function selectPlayerButton(e) {
     changeButtonState(e.target, "selected");
+
+    updateLabel(gameLogsLabel, "");
 
     // Save player selection
     setPlayerSelection(e.target.textContent);
@@ -71,6 +73,7 @@ function setPlayerSelection(selection) {
     playerSelection = selection;
 
     console.log("Player selection: " + playerSelection);// Test
+
 }
 
 function setComputerSelection() {
@@ -87,17 +90,16 @@ function setComputerSelection() {
 }
 
 function playRound() {
+
     if (playerSelection === computerSelection){
         updateLabel(gameLogsLabel, "Tie");
     } else if ((playerSelection === "R" && computerSelection === "S") || (playerSelection === "P" && computerSelection === "R") || (playerSelection === "S" && computerSelection === "P")){
         
         updateLabel(playerPointsLabel, ++playerPoints);
-
         updateLabel(gameLogsLabel, "Player won the round");
     } else {
 
         updateLabel(computerPointsLabel, ++computerPoints);
-
         updateLabel(gameLogsLabel, "Computer won the round");
     }
 
@@ -106,23 +108,26 @@ function playRound() {
 
 function updateLabel(node, newValue) {
 
-    node.classList.remove("unhide");
-    node.classList.add("hide");
+    changeNodeVisibility(node, "hide");  
 
     node.addEventListener("transitionend", () => {
-        node.classList.remove("hide");
+        
         node.textContent = newValue;
-        node.classList.add("unhide");
+        changeNodeVisibility(node, "show");
     });
 }
 
 function checkNextRound() {
     if (actualRound < totalRounds) {
         resetAllButtons();
-        setNewRound();
+
+        // Set new round
+        updateLabel(roundLabel, ++actualRound);
+
     } else {
         setTimeout(() => {
             updateLabel(gameLogsLabel, "Game over!");
+            changeAllButtonsState("inactive");
         }, 1000);
 
         setTimeout(() => {
@@ -140,30 +145,26 @@ function decideWinner(playerPoints, computerPoints) {
         updateLabel(gameLogsLabel, "Computer is the winner of the game!");
     }
 
-    endButtons.classList.remove("hide");
-    endButtons.classList.add("unhide");
+    changeNodeVisibility(endButtonsArea, "show");
 }
 
-
-// Update DOM:
+// DOM Manipulation:
 function changeButtonState(button, newState) {
     button.dataset.state = newState;
 }
 
-function setNewRound() {
-    roundLabel.textContent = ++actualRound;
+function changeAllButtonsState(newState) {
+    allButtons.forEach(button => changeButtonState(button, newState));
 }
 
 function resetAllButtons() {
-    allButtons.forEach(button => changeButtonState(button, "active"));
+    changeAllButtonsState("active");
 
     playerButtons.forEach(playerButton => playerButton.addEventListener("click", selectPlayerButton, {
             once: true
     }));
 }
 
-
-// These two variables needs to be accessed by two functions, so, they need to be global
-
-
-roundLabel.textContent = actualRound;
+function changeNodeVisibility(node, newState) {
+    node.dataset.visibility = newState;
+}

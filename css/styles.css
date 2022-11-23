@@ -309,16 +309,16 @@ a {
     border: 2px dashed var(--player-accent);
 }
 
-.hide {
+[data-visibility="hide"] {
     opacity: 0%;
     
 }
 
-.unhide {
+[data-visibility="show"] {
     opacity: 100%;
 }
 
-.hide,
-.unhide {
-    transition: opacity 0.25s;
+[data-visibility="hide"],
+[data-visibility="show"] {
+    transition: opacity 250ms;
 }
