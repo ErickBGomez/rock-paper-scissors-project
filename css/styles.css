@@ -42,6 +42,12 @@ section {
 }
 
 /* General game texts */
+
+.player-text,
+.computer-text {
+    font-weight: 400;
+}
+
 .player-text {
     color: var(--player-accent);
 }
@@ -89,11 +95,16 @@ section {
 
 /* Round and game labels */
 
-h1.round-text {
+h1 {
     font-weight: 800;
     font-size: 2.5em;
 
     margin-bottom: 30px;
+}
+
+span#round-label {
+    font-weight: 600;
+    margin-left: 20px;
 }
 
 h2 {
@@ -106,14 +117,6 @@ h2 {
 .selection-area {
     display: flex;
     justify-content: space-between;
-}
-
-.player-label {
-    color: var(--player-accent);
-}
-
-.computer-label {
-    color: var(--computer-accent);
 }
 
 .actions-area {
@@ -310,4 +313,5 @@ a {
 
 .hide {
     visibility: hidden;
+    transition: 200ms;
 }
