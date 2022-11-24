@@ -9,31 +9,26 @@ let actualRound = 1;
 const totalRounds = 5;
 
 // Times (milliseconds):
-const computerDecisionDelay = 500;
+const computerDecisionDelay = 750;
 const playRoundDelay = 500;
-const nextRoundDelay = 500;
+const nextRoundDelay = 1000;
 const gameOverDelay = 1000;
 const decideWinnerDelay = 2000;
 
 
 // Selection of DOM nodes:
-// Select buttons
 const playerButtons = document.querySelectorAll(".player-button");
 const computerButtons = document.querySelectorAll(".computer-button");
 const allButtons = document.querySelectorAll(".action-block");
 
-// Select Points
 const playerPointsLabel = document.querySelector("#player-points");
 const computerPointsLabel = document.querySelector("#computer-points");
 
-// Select game logs
 const gameLogsNameLabel = document.querySelector(".game-logs-name");
 const gameLogsBodyLabel = document.querySelector(".game-logs-body");
 
-// Select Round label
 const roundLabel = document.querySelector("#round-label");
 
-// End game buttons
 const endButtonsArea = document.querySelector("#end-game-buttons");
 
 // Game starts here
@@ -46,7 +41,6 @@ function selectPlayerButton(e) {
 
     updateGameLogsLabels();
 
-    // Save player selection
     setPlayerSelection(e.target.textContent);
 
     // Disable all buttons except the one who invoked this function
@@ -77,12 +71,25 @@ function setPlayerSelection(selection) {
 }
 
 function setComputerSelection() {
+    // Select a random integer between 0 and 2
     const random = Math.floor(Math.random() * 3);
 
-    computerSelection = (random === 0) ? "R"
-                      : (random === 1) ? "P"
-                      : (random === 2) ? "S"
-                      : "Invalid number";
+    switch(random) {
+        case 0:
+            computerSelection = "R";
+            break;
+
+        case 1:
+            computerSelection = "P";
+            break;
+
+        case 2:
+            computerSelection = "S";
+            break;
+        
+        default:
+            computerSelection = "Invalid number";
+    }
 
     selectComputerButton(computerSelection);
 }
@@ -92,30 +99,28 @@ function playRound() {
     let logBodyString = "";
 
     // First check if player and computer selection are not the same
-    if (playerSelection !== computerSelection){
+    if (playerSelection !== computerSelection) {
 
-        // If player beats computer
-        if ((playerSelection === "R" && computerSelection === "S")
-         || (playerSelection === "P" && computerSelection === "R")
-         || (playerSelection === "S" && computerSelection === "P")) {
+        if ((playerSelection === "R" && computerSelection === "S") ||
+            (playerSelection === "P" && computerSelection === "R") ||
+            (playerSelection === "S" && computerSelection === "P")) {
+            
+            // If player beats computer
             updateLabel(playerPointsLabel, ++playerPoints);
             
             logNameString = "Player";
-            
-        // If computer beats player
         } else {
+            // If computer beats player
             updateLabel(computerPointsLabel, ++computerPoints);
             logNameString = "Computer";
         }
-
         logBodyString = "won the round.";  
-    // If both selections are the same
     } else {
+        // If both selections are the same
         logNameString = "";
         logBodyString = "Tie.";
     }
 
-    // Update game logs with their name and body
     updateGameLogsLabels(logNameString, logBodyString);
 
     setTimeout(checkNextRound, nextRoundDelay);
@@ -124,7 +129,7 @@ function playRound() {
 function checkNextRound() {
     if (actualRound < totalRounds) {
         resetAllButtons();
-        // Set new round
+
         updateLabel(roundLabel, ++actualRound);
     } else
         setTimeout(setGameOver, gameOverDelay);
@@ -138,13 +143,12 @@ function setGameOver() {
 }
 
 function decideWinner() {
-    if (playerPoints === computerPoints) {
+    if (playerPoints === computerPoints)
         updateGameLogsLabels("", "There are no winners!");
-    } else if (playerPoints > computerPoints) {
+    else if (playerPoints > computerPoints)
         updateGameLogsLabels("Player", "is the winner!");
-    } else {
+    else
         updateGameLogsLabels("Computer", "is the winner!");
-    }
 
     changeNodeVisibility(endButtonsArea, "show");
 }
@@ -157,7 +161,6 @@ function restartNewGame() {
     updateGameLogsLabels();
 
     resetAllButtons();
-
     changeNodeVisibility(endButtonsArea, "hide");
 }
 
@@ -197,12 +200,11 @@ function updateGameLogsLabels(nameLabel = "", bodyLabel = "") {
     updateLabel(gameLogsBodyLabel, bodyLabel);
 }
 
-// Animation before and after applying new value to a node
+// Animation before and after applying new value to a label node
 function updateLabel(node, newValue) {
     changeNodeVisibility(node, "hide");  
 
     node.addEventListener("transitionend", () => {
-        
         node.textContent = newValue;
         changeNodeVisibility(node, "show");
     });

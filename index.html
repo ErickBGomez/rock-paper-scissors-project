@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet">
     <script src="js/main.js" defer></script>
 </head>
-
 <body>
     <section id="title-screen">
         <h2>LET'S PLAY:</h2>
@@ -21,58 +20,45 @@
     </section>
     <section id="game-area">
         <h1 class="round-text">ROUND <span id="round-label">N</span></h1>
-
         <div class="selection-area">
-
             <div class="player-area">
                 <h2 class="player-label"><span class="player-text">Player</span></h2>
-
                 <div class="actions-area">
-
                     <div class="action">
                         <button class="action-block player-button rock-block" data-state="active">R</button>
                         <p class="action-text">ROCK</p>
                     </div>
-
                     <div class="action">
                         <button class="action-block player-button paper-block" data-state="active">P</button>
                         <p class="action-text">PAPER</p>
                     </div>
-
                     <div class="action">
                         <button class="action-block player-button scissors-block" data-state="active">S</button>
                         <p class="action-text">SCISSORS</p>
                     </div>
                 </div>
             </div>
-
             <div class="computer-area">
                 <h2 class="computer-label"><span class="computer-text">Computer</span></h2>
 
                 <div class="actions-area">
-
                     <div class="action">
                         <button class="action-block computer-button rock-block" data-state="active" tabindex="-1">R</button>
                         <p class="action-text">ROCK</p>
                     </div>
-
                     <div class="action">
                         <button class="action-block computer-button paper-block" data-state="active" tabindex="-1">P</button>
                         <p class="action-text">PAPER</p>
                     </div>
-
                     <div class="action">
                         <button class="action-block computer-button scissors-block" data-state="active" tabindex="-1">S</button>
                         <p class="action-text">SCISSORS</p>
                     </div>
                 </div>
             </div>
-
         </div>
-
         <div class="points-area">
             <h2 class="points-label">Points</h2>
-
             <div class="points">
                 <span id="player-points" data-visibility="show">0</span>
                 <span class="points-divider">-</span>
@@ -80,20 +66,16 @@
             </div>
         </div>
     </section>
-
     <section id="game-logs-area">
         <h2 class="game-logs">
             <span class="game-logs-name" data-logname=""></span>
             <span class="game-logs-body"></span>
-            <span class="game-logs-winner"></span>
         </h2>
     </section>
-
     <section id="end-game-buttons" data-visibility="hide">
         <button class="play-again">PLAY AGAIN</button>
         <button class="view-source-code">VIEW SOURCE CODE</button>
     </section>
-
     <footer>
         Project made by <a href="https://github.com/ErickBGomez" target="_blank">Erick B. Gómez</a>
     </footer>

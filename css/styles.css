@@ -14,6 +14,7 @@
     --computer-accent: #a161d3;
 }
 
+/* General */
 * {
     box-sizing: border-box;
     padding: 0;
@@ -41,8 +42,7 @@ section {
     margin: 20px 0;
 }
 
-/* General game texts */
-
+/* Game texts */
 .player-text,
 .computer-text {
     font-weight: 400;
@@ -57,7 +57,6 @@ section {
 }
 
 /* Title screen text */
-
 #title-screen {
     margin-bottom: 35px;
 }
@@ -86,15 +85,12 @@ section {
 }
 
 /* Game area */
-
-
 #game-area {
     flex: 1;
 }
 
 
 /* Round and game labels */
-
 h1 {
     font-weight: 800;
     font-size: 2.5em;
@@ -113,7 +109,6 @@ h2 {
 }
 
 /* Select action styles */
-
 .selection-area {
     display: flex;
     justify-content: space-between;
@@ -140,9 +135,7 @@ h2 {
 active: Waiting to be selected
 selected: Button selected either by the player or computer
 inactive: Disabled buttons that were not selected
-
 */
-
 [data-state="active"] {
     scale: 1.0;
     transition: 150ms;
@@ -160,7 +153,6 @@ inactive: Disabled buttons that were not selected
 }
 
 /* Player button styles and states */
-
 .player-button {
     border: none;
 }
@@ -200,7 +192,6 @@ inactive: Disabled buttons that were not selected
 }
 
 /* Computer buttons styles and states */
-
 .computer-button {
     background-color: var(--black-accent);
     border: 3px solid;
@@ -232,7 +223,6 @@ inactive: Disabled buttons that were not selected
 }
 
 /* Points */
-
 .points-area {
     margin-top: 40px;
 }
@@ -250,7 +240,6 @@ inactive: Disabled buttons that were not selected
 }
 
 /* Game logs */
-
 .game-logs span {
     font-weight: 400;
 }
@@ -264,7 +253,6 @@ inactive: Disabled buttons that were not selected
 }
 
 /* End game buttons */
-
 #end-game-buttons {
     flex: 1;
     display: flex;
@@ -316,7 +304,6 @@ a {
 }
 
 /* Others */
-
 .border {
     border: 2px dashed var(--player-accent);
 }
