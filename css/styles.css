@@ -5,13 +5,13 @@
     --paper-accent: #11a9d8;
     --scissors-accent: #e43737;
 
+    --inactive-accent: #3b3b3b;
+    
     --black-accent: #1d1d1d;
     --white-accent: #e2e2e2;
 
     --player-accent: #1daa6f;
     --computer-accent: #a161d3;
-
-    --inactive-accent: #3b3b3b;
 }
 
 * {
@@ -250,6 +250,18 @@ inactive: Disabled buttons that were not selected
 }
 
 /* Game logs */
+
+.game-logs span {
+    font-weight: 400;
+}
+
+[data-logname="Player"] {
+    color: var(--player-accent);
+}
+
+[data-logname="Computer"] {
+    color: var(--computer-accent);
+}
 
 /* End game buttons */
 

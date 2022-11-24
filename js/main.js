@@ -27,7 +27,8 @@ const playerPointsLabel = document.querySelector("#player-points");
 const computerPointsLabel = document.querySelector("#computer-points");
 
 // Select game logs
-const gameLogsLabel = document.querySelector(".game-logs");
+const gameLogsNameLabel = document.querySelector(".game-logs-name");
+const gameLogsBodyLabel = document.querySelector(".game-logs-body");
 
 // Select Round label
 const roundLabel = document.querySelector("#round-label");
@@ -43,7 +44,7 @@ roundLabel.textContent = actualRound;
 function selectPlayerButton(e) {
     changeButtonState(e.target, "selected");
 
-    updateLabel(gameLogsLabel, "");
+    updateGameLogsLabels();
 
     // Save player selection
     setPlayerSelection(e.target.textContent);
@@ -87,17 +88,35 @@ function setComputerSelection() {
 }
 
 function playRound() {
-    if (playerSelection === computerSelection){
-        updateLabel(gameLogsLabel, "Tie");
-    } else if ((playerSelection === "R" && computerSelection === "S")
-            || (playerSelection === "P" && computerSelection === "R")
-            || (playerSelection === "S" && computerSelection === "P")) {
-        updateLabel(playerPointsLabel, ++playerPoints);
-        updateLabel(gameLogsLabel, "Player won the round");
+    let logNameString = "";
+    let logBodyString = "";
+
+    // First check if player and computer selection are not the same
+    if (playerSelection !== computerSelection){
+
+        // If player beats computer
+        if ((playerSelection === "R" && computerSelection === "S")
+         || (playerSelection === "P" && computerSelection === "R")
+         || (playerSelection === "S" && computerSelection === "P")) {
+            updateLabel(playerPointsLabel, ++playerPoints);
+            
+            logNameString = "Player";
+            
+        // If computer beats player
+        } else {
+            updateLabel(computerPointsLabel, ++computerPoints);
+            logNameString = "Computer";
+        }
+
+        logBodyString = "won the round.";  
+    // If both selections are the same
     } else {
-        updateLabel(computerPointsLabel, ++computerPoints);
-        updateLabel(gameLogsLabel, "Computer won the round");
+        logNameString = "";
+        logBodyString = "Tie.";
     }
+
+    // Update game logs with their name and body
+    updateGameLogsLabels(logNameString, logBodyString);
 
     setTimeout(checkNextRound, nextRoundDelay);
 }
@@ -112,7 +131,7 @@ function checkNextRound() {
 }
 
 function setGameOver() {
-    updateLabel(gameLogsLabel, "Game over!");
+    updateGameLogsLabels("", "Game Over!");
     changeAllButtonsState("inactive");
 
     setTimeout(decideWinner, decideWinnerDelay);
@@ -120,11 +139,11 @@ function setGameOver() {
 
 function decideWinner() {
     if (playerPoints === computerPoints) {
-        updateLabel(gameLogsLabel, "There are no winners!");
+        updateGameLogsLabels("", "There are no winners!");
     } else if (playerPoints > computerPoints) {
-        updateLabel(gameLogsLabel, "Player is the winner of the game!");
+        updateGameLogsLabels("Player", "is the winner!");
     } else {
-        updateLabel(gameLogsLabel, "Computer is the winner of the game!");
+        updateGameLogsLabels("Computer", "is the winner!");
     }
 
     changeNodeVisibility(endButtonsArea, "show");
@@ -135,7 +154,7 @@ function restartNewGame() {
     updateLabel(computerPointsLabel, computerPoints = 0);
     
     updateLabel(roundLabel, actualRound = 1);
-    updateLabel(gameLogsLabel, "");
+    updateGameLogsLabels();
 
     resetAllButtons();
 
@@ -169,6 +188,13 @@ function resetAllButtons() {
     playerButtons.forEach(playerButton => playerButton.addEventListener("click", selectPlayerButton, {
             once: true
     }));
+}
+
+function updateGameLogsLabels(nameLabel = "", bodyLabel = "") {
+    updateLabel(gameLogsNameLabel, nameLabel);
+    gameLogsNameLabel.dataset.logname = nameLabel;
+
+    updateLabel(gameLogsBodyLabel, bodyLabel);
 }
 
 // Animation before and after applying new value to a node
