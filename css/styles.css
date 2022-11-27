@@ -1,0 +1,323 @@
+/* Variables */
+:root {
+    /* Colors */
+    --rock-accent: #f0790b;
+    --paper-accent: #11a9d8;
+    --scissors-accent: #e43737;
+
+    --inactive-accent: #3b3b3b;
+    
+    --black-accent: #1d1d1d;
+    --white-accent: #e2e2e2;
+
+    --player-accent: #1daa6f;
+    --computer-accent: #a161d3;
+}
+
+/* General */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    color: var(--white-accent);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+body {
+    background-color: var(--black-accent);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section, footer {
+    width: 100%;
+    max-width: 1000px;
+    text-align: center;
+}
+
+section {
+    margin: 20px 0;
+}
+
+/* Game texts */
+.player-text,
+.computer-text {
+    font-weight: 400;
+}
+
+.player-text {
+    color: var(--player-accent);
+}
+
+.computer-text {
+    color: var(--computer-accent);
+}
+
+/* Title screen text */
+#title-screen {
+    margin-bottom: 35px;
+}
+
+#title-screen h1 {
+    font-size: 2em;
+    margin: 0;
+    font-weight: 1000;
+}
+
+#title-screen h2 {
+    font-size: 1em;
+    margin: 0;
+}
+
+.rock-title {
+    color: var(--rock-accent);
+}
+
+.paper-title {
+    color: var(--paper-accent);
+}
+
+.scissors-title {
+    color: var(--scissors-accent);
+}
+
+/* Game area */
+#game-area {
+    flex: 1;
+}
+
+
+/* Round and game labels */
+h1 {
+    font-weight: 800;
+    font-size: 2.5em;
+
+    margin-bottom: 30px;
+}
+
+span#round-label {
+    font-weight: 600;
+    margin-left: 20px;
+}
+
+h2 {
+    font-weight: 400;
+    font-size: 1.5em;
+}
+
+/* Select action styles */
+.selection-area {
+    display: flex;
+    justify-content: space-between;
+}
+
+.actions-area {
+    display: flex;
+    gap: 25px;
+}
+
+.action-block {
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+
+    font-weight: 800;
+    font-size: 1.5em;
+}
+
+/* Button states:
+
+active: Waiting to be selected
+selected: Button selected either by the player or computer
+inactive: Disabled buttons that were not selected
+*/
+[data-state="active"] {
+    scale: 1.0;
+    transition: 150ms;
+}
+
+[data-state="selected"],
+.player-button[data-state="active"]:hover {
+    scale: 1.1;
+    transition: 200ms;
+}
+
+[data-state="inactive"] {
+    scale: 0.9;
+    transition: 150ms;
+}
+
+/* Player button styles and states */
+.player-button {
+    border: none;
+}
+
+.player-button[data-state="active"] {
+    background-color: var(--white-accent);
+    color: var(--black-accent);
+}
+
+.player-button[data-state="active"]:hover {
+    cursor: pointer;
+}
+
+.player-button[data-state="active"]:hover,
+.player-button[data-state="selected"] {
+    color: var(--white-accent);
+}
+
+.player-button.rock-block[data-state="active"]:hover,
+.player-button.rock-block[data-state="selected"] {
+    background-color: var(--rock-accent);
+}
+
+.player-button.paper-block[data-state="active"]:hover,
+.player-button.paper-block[data-state="selected"] {
+    background-color: var(--paper-accent);
+}
+
+.player-button.scissors-block[data-state="active"]:hover,
+.player-button.scissors-block[data-state="selected"] {
+    background-color: var(--scissors-accent);
+}
+
+.player-button[data-state="inactive"] {
+    background-color: var(--inactive-accent);
+    color: var(--black-accent);
+}
+
+/* Computer buttons styles and states */
+.computer-button {
+    background-color: var(--black-accent);
+    border: 3px solid;
+}
+
+.computer-button[data-state="active"] {
+    color: var(--white-accent);
+    border-color: var(--white-accent);
+}
+
+.computer-button.rock-block[data-state="selected"] {
+    color: var(--rock-accent);
+    border-color: var(--rock-accent);
+}
+
+.computer-button.paper-block[data-state="selected"] {
+    color: var(--paper-accent);
+    border-color: var(--paper-accent);
+}
+
+.computer-button.scissors-block[data-state="selected"] {
+    color: var(--scissors-accent);
+    border-color: var(--scissors-accent);
+}
+
+.computer-button[data-state="inactive"] {
+    color: var(--inactive-accent);
+    border-color: var(--inactive-accent);
+}
+
+/* Points */
+.points-area {
+    margin-top: 40px;
+}
+
+.points-label {
+    margin-bottom: 10px;
+}
+
+.points span {
+    font-size: 3em;
+}
+
+.points-divider {
+    margin: 0 70px;
+}
+
+/* Game logs */
+.game-logs span {
+    font-weight: 400;
+}
+
+[data-logname="Player"] {
+    color: var(--player-accent);
+}
+
+[data-logname="Computer"] {
+    color: var(--computer-accent);
+}
+
+/* End game buttons */
+#end-game-buttons {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+
+#end-game-buttons button {
+    width: 225px;
+    height: 75px;
+    border-radius: 15px;
+    font-size: 1em;
+    font-weight: 800;
+
+    color: var(--black-accent);
+    border: none;
+
+    transition: 150ms;
+}
+
+#end-game-buttons button:hover {
+    scale: 1.1;
+    color: var(--white-accent);
+
+    cursor: pointer;
+
+    transition: 200ms;
+}
+
+.play-again:hover {
+    background-color: var(--player-accent);
+}
+
+.view-source-code:hover {
+    background-color: var(--computer-accent);
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    padding: 2vh 0;
+}
+
+a {
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--player-accent);
+}
+
+/* Others */
+.border {
+    border: 2px dashed var(--player-accent);
+}
+
+[data-visibility="hide"] {
+    opacity: 0%;
+    
+}
+
+[data-visibility="show"] {
+    opacity: 100%;
+}
+
+[data-visibility="hide"],
+[data-visibility="show"] {
+    transition: opacity 250ms;
+}
