@@ -310,14 +310,15 @@ a {
 
 [data-visibility="hide"] {
     opacity: 0%;
-    
+    visibility: hidden;
 }
 
 [data-visibility="show"] {
     opacity: 100%;
+    visibility: visible;
 }
 
 [data-visibility="hide"],
 [data-visibility="show"] {
-    transition: opacity 250ms;
+    transition: 250ms;
 }
