@@ -75,4 +75,4 @@ It is from this point that the classic rock paper scissors rules apply. The winn
 
 **The Odin Project's** Assignment: Rock Paper Scissors.
 
-More information: <a href="" target="_blank">Click here</a>
+More information: <a href="https://www.theodinproject.com" target="_blank">Click here</a>
