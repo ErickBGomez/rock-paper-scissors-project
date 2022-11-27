@@ -22,27 +22,27 @@ The classic Rock paper scissors game, now available in your favorite browser in 
 
 <br>
 
-The objective of this project is to demonstrate the knowledge acquired in The Odin Project’s JavaScript Basics portfolio. In which, topics like Arrow Functions, DOM Manipulation, Events, and much more has been applied here. But also I'm demosntrating in this project some skills that I have learned outside of this course, such as UI and UX Design.
+The objective of this project is to demonstrate the knowledge acquired in **The Odin Project’s JavaScript Basics portfolio**. In which, topics like Arrow Functions, DOM Manipulation, Events, and much more has been applied here. But also I'm demosntrating in this project some skills that I have learned outside of this course, such as UI and UX Design.
 
-If you want to play this minigame, you can click the “PLAY NOW” button above or you can go to “Environments” at your right, click on “github-pages” and then click on “View deployment”.
+If you want to play this minigame, you can click the **PLAY NOW** button above or you can go to **Environments** at your right, click on **github-pages** and then click on **View deployment**.
 
 <br>
 
 # How to Play
 
-Click the white buttons below the "Player" text to start playing! Each button has a label below it, describing the action of each one.
+Click the white buttons below the **Player** text to start playing! Each button has a label below it, describing the action of each one.
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/90425287/204114883-fc4e9cd6-a2bf-4dd8-9c4a-a57a68943b5a.png" alt="Player is selecting Paper">
 </p>
 
-Once you have clicked on one of the buttons, the computer will make its own selection and it will be displayed in its respective area
+Once you have clicked on one of the buttons, the **Computer** will make its own selection and it will be displayed in its respective area
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/90425287/204114425-429146b8-f7ad-428d-b70c-99e3744666d0.png" alt="Computer selected Rock">
 </p>
 
-It is from this point that the classic rock paper scissors rules apply. The winner of the round will be awarded a point in their score. Whoever has the highest score in all 5 rounds is the winner of the game!
+It is from this point that the classic rock paper scissors rules apply. The winner of the round will be awarded a point in their score. Whoever has the highest score in all 5 rounds is **the winner of the game**!
 
 <br>
 
@@ -73,6 +73,6 @@ It is from this point that the classic rock paper scissors rules apply. The winn
 
 # About The Odin Project
 
-The Odin Project's Assignment: Rock Paper Scissors.
+**The Odin Project's** Assignment: Rock Paper Scissors.
 
 More information: <a href="" target="_blank">Click here</a>
